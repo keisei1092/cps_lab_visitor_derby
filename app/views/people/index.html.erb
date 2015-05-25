@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>CPS Lab訪問者ダービー</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.name %></td>
+        <!-- <td><%= link_to 'Show', person %></td> -->
+        <td><%= link_to '編集', edit_person_path(person) %></td>
+        <td><%= link_to '削除', person, method: :delete, data: { confirm: '削除してよろしいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '手動で登録', new_person_path %>
