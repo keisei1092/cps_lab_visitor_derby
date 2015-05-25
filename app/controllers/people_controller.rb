@@ -1,3 +1,4 @@
+# coding: utf-8
 class PeopleController < ApplicationController
   protect_from_forgery with: :null_session
   before_action :set_person, only: [:show, :edit, :update, :destroy]
@@ -5,7 +6,9 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    # @people = Person.all
+    @people = Person.group(:name)
+    @counts = Person.group(:name).count.values
     respond_to do |format|
       format.html # => 通常のURLの場合index.html.erbが返される
       format.json { render json: @products } # URLが.jsonの場合、@people.to_jsonが返される
