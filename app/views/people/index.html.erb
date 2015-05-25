@@ -13,7 +13,7 @@
   <tbody>
     <% @people.each_with_index do |person, i| %>
       <tr>
-        <td><%= person.name %> (<b style="color: red"><%= @counts[i] %></b> 回)</td>
+        <td><%= person.name %> (<b style="color: blue"><%= @counts[i] %></b> 回)</td>
         <!-- <td><%= link_to 'Show', person %></td> -->
         <td><%= link_to '編集', edit_person_path(person) %></td>
         <td><%= link_to '削除', person, method: :delete, data: { confirm: '削除してよろしいですか？' } %></td>
