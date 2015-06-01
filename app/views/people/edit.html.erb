@@ -1,5 +1,11 @@
 <%- model_class = Person -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+  <h1>ユーザ名編集</h1>
 </div>
-<%= render :partial => 'form' %>
+<%= form_for @person, method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+  <%= f.submit %>
+<% end %>
