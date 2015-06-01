@@ -1,0 +1,4 @@
+class AddUserNameToPeoPle < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,27 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<h1>CPS Lab訪問者ダービー</h1>
-
-<table>
-  <!--<thead>
+<%- model_class = Person -%>
+<div class="page-header">
+  <h1>残留申請で、限界を超えろ。</h1>
+</div>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <th>名前</th>
-      <th colspan="3"></th>
+      <!--<th><%= model_class.human_attribute_name(:id) %></th>-->
+      <!--<th><%= model_class.human_attribute_name(:name) %></th>-->
+      <th><!--<%= model_class.human_attribute_name(:user_name) %>-->ユーザ名</th>
+      <th><!--<%= model_class.human_attribute_name(:count) %>-->きた回数</th>
+      <th><!--<%= model_class.human_attribute_name(:created_at) %>-->最後にきた日時</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
-  </thead> -->
-
+  </thead>
   <tbody>
-    <% @people.each_with_index do |person, i| %>
+    <% @people.each do |person| %>
       <tr>
-        <td><%= person.name %> (<b style="color: blue"><%= @counts[i] %></b> 回)</td>
-        <!-- <td><%= link_to 'Show', person %></td> -->
-        <td><%= link_to '編集', edit_person_path(person) %></td>
-        <td><%= link_to '削除', person, method: :delete, data: { confirm: '削除してよろしいですか？' } %></td>
+        <!--<td><%= link_to person.id, person_path(person) %></td>-->
+        <!--<td><%= person.name %></td>-->
+        <td><%= person.user_name %></td>
+        <td><%= person.count %></td>
+        <td><%= l(person.created_at, format: :long) %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_person_path(person), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      person_path(person),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to '手動で登録', new_person_path %>
+<!--<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_person_path,
+            :class => 'btn btn-primary' %>-->

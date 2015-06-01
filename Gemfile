@@ -44,3 +44,6 @@ group :development, :test do
 end
 
 gem 'rb-readline'
+gem 'hirb-unicode'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
