@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
       # create new person
       @person = Person.new({ :name => params[:name] })
       @person.user_name = params[:name]
-      @person.count = 0
+      @person.count = 1
     end
 
     respond_to do |format|
