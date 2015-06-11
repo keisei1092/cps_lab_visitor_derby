@@ -39,7 +39,9 @@ class PeopleController < ApplicationController
     if Person.exists?(:name => params[:name]) then
       # count up
       @person = Person.where("name = ?", params[:name]).first
-      @person.count = @person.count + 1
+      if !@person.created_at.today? then
+        @person.count = @person.count + 1
+      end
     else
       # create new person
       @person = Person.new({ :name => params[:name] })
